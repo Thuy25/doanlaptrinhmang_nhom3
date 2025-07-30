@@ -1,0 +1,167 @@
+/* static/css/styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    background-color: #2a2a2a;
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    background-color: #333;
+    color: #fff;
+}
+
+.list-group-item {
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: none;
+}
+
+.list-group-item:hover {
+    background-color: #333;
+}
+
+.stock-item.active {
+    background-color: #1e3a8a;
+    border-left: 4px solid #0d6efd;
+    color: #fff;
+}
+
+#priceChart {
+    width: 100 !important;
+    height: 300px !important;
+    background-color: #333;
+}
+
+.alert {
+    margin-bottom: 0.5rem;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+.badge {
+    font-size: 0.8rem;
+    font-weight: normal;
+    background-color: #444;
+    color: #fff;
+}
+
+/* Style cho header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #444;
+}
+
+.nav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-tabs a {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.nav-tabs a.active {
+    color: #d32f2f;
+    border-bottom: 2px solid #d32f2f;
+}
+
+.nav-tabs .logo {
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions .icon {
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+.header-actions a.btn-login,
+.header-actions a.btn-register,
+.header-actions a.btn-logout {
+    background-color: #d32f2f;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.header-actions a.btn-login:hover,
+.header-actions a.btn-register:hover,
+.header-actions a.btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+#current-time {
+    font-size: 1.2em;
+}
+
+/* Style cho panel cài đặt */
+.right-panel {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.settings-panel {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: none; /* Ẩn ban đầu */
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    z-index: 10;
+}
+
+.settings-panel h3 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.settings-list {
+    list-style: none;
+    padding: 0;
+}
+
+.settings-list li {
+    padding: 10px;
+    cursor: pointer;
+    color: #e0e0e0;
+}
+
+.settings-list li:hover {
+    background-color: #333;
+    border-radius: 4px;
+}

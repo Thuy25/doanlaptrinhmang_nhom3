@@ -1,0 +1,120 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard Giao Dịch{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="nav-tabs">
+            <a href="{{ url_for('dashboard') }}" class="logo">DNSSE</a>
+            <a href="{{ url_for('dashboard') }}" class="{% if active_tab == 'dashboard' %}active{% endif %}">Bảng giá</a>
+            <a href="{{ url_for('place_order') }}" class="{% if active_tab == 'place_order' %}active{% endif %}">Đặt lệnh</a>
+            <a href="{{ url_for('trade_money') }}" class="{% if active_tab == 'trade_money' %}active{% endif %}">Giao dịch tiền</a>
+            <a href="{{ url_for('analysis') }}" class="{% if active_tab == 'analysis' %}active{% endif %}">Phân tích</a>
+            <a href="{{ url_for('assets') }}" class="{% if active_tab == 'assets' %}active{% endif %}">Tài sản</a>
+            <a href="{{ url_for('utilities') }}" class="{% if active_tab == 'utilities' %}active{% endif %}">Tiền ích</a>
+        </div>
+        <div id="current-time">14:40:00</div>
+        <div class="header-actions">
+            <span class="icon settings-icon" id="settings-icon">⚙️</span>
+            <span class="icon">?</span>
+            <span class="icon">🎧</span>
+            {% if 'username' not in session %}
+                <a href="{{ url_for('login') }}" class="btn-login">Đăng nhập</a>
+                <a href="{{ url_for('register') }}" class="btn-register">Mở tài khoản</a>
+            {% else %}
+                <span style="color: #e0e0e0;">Xin chào, {{ session['username'] }}</span>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Đăng xuất</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="stock-list">
+                <h3>Danh sách cổ phiếu</h3>
+                <div class="stock-item">
+                    <span>MAK</span><span>9.99% (+0.00)</span>
+                </div>
+                <div class="stock-item">
+                    <span>BCM</span><span>0.00% (+0.00)</span>
+                </div>
+                <div class="stock-item">
+                    <span>BID</span><span>0.00% (+0.00)</span>
+                </div>
+                <div class="stock-item">
+                    <span>BVH</span><span>0.00% (+0.00)</span>
+                </div>
+                <div class="stock-item">
+                    <span>CTG</span><span>9.99% (+0.00)</span>
+                </div>
+                <div class="stock-item">
+                    <span>FPT</span><span>0.00% (+0.00)</span>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="right-panel">
+            <div class="order-form">
+                <h3>Đặt lệnh</h3>
+                <input type="text" placeholder="Mã CK">
+                <input type="number" placeholder="Số lượng">
+                <input type="number" placeholder="Giá">
+                <button>Đặt lệnh</button>
+            </div>
+            <div class="notifications">
+                <h3>Thông báo</h3>
+                <p>ENSA: Trả lời AI không?</p>
+                <p>VNINDEX +1.59% so với đầu phiên, giá trị giao dịch -1.15% với xu hướng tăng trong ngắn hạn</p>
+            </div>
+            <!-- Panel cài đặt -->
+            <div class="settings-panel" id="settings-panel">
+                <h3>Cài đặt</h3>
+                <ul class="settings-list">
+                    <li>Thông tin tài khoản</li>
+                    <li>Đổi mật khẩu</li>
+                    <li>Thông báo</li>
+                    <li>Đăng xuất</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const vietnamTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }));
+            const hours = vietnamTime.getHours().toString().padStart(2, '0');
+            const minutes = vietnamTime.getMinutes().toString().padStart(2, '0');
+            const seconds = vietnamTime.getSeconds().toString().padStart(2, '0');
+            document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Điều khiển panel cài đặt
+        document.addEventListener('DOMContentLoaded', function() {
+            const settingsIcon = document.getElementById('settings-icon');
+            const settingsPanel = document.getElementById('settings-panel');
+            if (settingsIcon && settingsPanel) {
+                console.log('Settings elements found');
+                settingsIcon.addEventListener('click', function() {
+                    console.log('Settings icon clicked');
+                    if (settingsPanel.style.display === 'block') {
+                        settingsPanel.style.display = 'none';
+                    } else {
+                        settingsPanel.style.display = 'block';
+                    }
+                });
+            } else {
+                console.log('Settings elements not found');
+            }
+        });
+    </script>
+</body>
+</html>
