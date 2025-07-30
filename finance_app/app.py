@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from flask_socketio import SocketIO
 import requests
 from config import Config
-from ssi_fc_data import fc_md_client, model
+from library.ssi_fc_data import fc_md_client, model
 import config as api_config
 import json
 import threading
