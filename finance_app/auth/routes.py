@@ -53,3 +53,11 @@ def login():
             flash("Sai username hoặc password")
         db.close()
     return render_template('login.html')
+
+
+@auth.route('/logout')
+def logout():
+    session.clear()  # Xóa toàn bộ session
+    flash('Đăng xuất thành công.', 'success')
+    return redirect(url_for('auth.login'))
+

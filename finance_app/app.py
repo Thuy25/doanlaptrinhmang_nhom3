@@ -12,9 +12,7 @@ def index():
 
 @app.route('/dashboard')
 def dashboard():
-    if 'user_id' not in session:
-        return redirect(url_for('auth.login'))
-    return f"Xin chào {session['username']}! Đây là dashboard."
+    return render_template('dashboard.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
