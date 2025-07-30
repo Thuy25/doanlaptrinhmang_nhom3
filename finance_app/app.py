@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_socketio import SocketIO
 import requests
-from config import Config
 from ssi_fc_data import fc_md_client, model
 import config as api_config
 import json
@@ -10,7 +9,7 @@ import time
 from ssi_fc_data.fc_md_stream import MarketDataStream  # Giả định import
 
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(api_config)
 socketio = SocketIO(app)
 
 # Khởi tạo client SSI API
