@@ -1,100 +1,16 @@
-<!-- templates/register.html -->
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        .register-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #1a1a1a;
-        }
-        .register-card {
-            background-color: #2a2a2a;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            width: 300px;
-            text-align: center;
-        }
-        .register-card h2 {
-            color: #fff;
-            margin-bottom: 20px;
-        }
-        .register-card .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .register-card label {
-            color: #e0e0e0;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .register-card input {
-            width: 100%;
-            padding: 8px;
-            background-color: #333;
-            border: 1px solid #444;
-            border-radius: 4px;
-            color: #e0e0e0;
-        }
-        .register-card button {
-            width: 100%;
-            padding: 10px;
-            background-color: #d32f2f;
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        .register-card button:hover {
-            background-color: #b71c1c;
-        }
-        .register-card .error {
-            color: #ff4444;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        .register-card .login-link {
-            margin-top: 15px;
-            color: #0d6efd;
-            text-decoration: none;
-        }
-        .register-card .login-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="register-container">
-        <div class="register-card">
-            <h2>Đăng ký</h2>
-            {% if error %}
-                <div class="error">{{ error }}</div>
-            {% endif %}
-            <form method="POST" action="{{ url_for('register') }}">
-                <div class="form-group">
-                    <label for="username">Tên đăng nhập</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <button type="submit">Đăng ký</button>
-            </form>
-            <a href="{{ url_for('login') }}" class="login-link">Đã có tài khoản? Đăng nhập</a>
-        </div>
-    </div>
-</body>
-</html>
+<h2>Đăng ký</h2>
+<form method="POST">
+  <input name="name" placeholder="Họ tên"><br>
+  <input name="username" placeholder="Username"><br>
+  <input type="password" name="password" placeholder="Password"><br>
+  <input name="email" placeholder="Email"><br>
+  <input name="phone" placeholder="SĐT"><br>
+  <input name="birthday" placeholder="YYYY-MM-DD"><br>
+  <input name="country" placeholder="Quốc gia"><br>
+  <select name="sex">
+    <option value="1">Nam</option>
+    <option value="0">Nữ</option>
+  </select><br>
+  <button type="submit">Đăng ký</button>
+</form>
+<a href="{{ url_for('auth.login') }}">Đăng nhập</a>

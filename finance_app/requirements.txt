@@ -8,3 +8,7 @@ eventlet>=0.33.3
 python-dotenv>=1.0.0
 Werkzeug==2.3.8
 ssi-fc-data
+pyodbc
+sqlalchemy
+sqlacodegen
+flask-bcrypt
